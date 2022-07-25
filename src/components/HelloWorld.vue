@@ -1,4 +1,41 @@
 <template>
+
+<!--START MODAL -->
+<div class="modal fade" id="SelectanEvent" tabindex="-1" role="dialog" aria-labelledby="SelectanEvent" aria-hidden="true">
+    <div class="modal-dialog"> 
+      <div class="modal-content"> 
+        <!-- START:: Modal content-->
+        <!-- start header  -->
+        <div class="modal-header with-sub-header" >
+		<div class="topProBar">
+			<div class="progress">
+				<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+			</div>
+		</div>
+			
+		</div>
+        <!-- end header  -->
+        <div class="selectDatepicker active" >
+			<h4 class="modal-title">Select Date Of Event</h4>		
+				<div id="datepicker" data-date="12/03/2012"></div>
+					<input type="hidden" id="my_hidden_input">
+		</div>
+    <!-- body START -->
+    
+    <!-- END body -->
+    <!-- START:: FOOTER -->
+    <div class="modal-body">
+				<div class="btn-space with-border">
+					<button class="btn link " type="button">Back</button>
+					<button class="btn primary" type="button">Next</button>
+				</div>
+		</div>
+    <!-- END :: FOOTER -->
+        <!-- END::   Modal content-->
+      </div>
+    </div>
+</div>
+<!-- END MODAL  -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
@@ -153,7 +190,7 @@
 
     <div class="row">
       <div class="col-12 text-right mb-5">
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal">Get Quote</button>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#SelectanEvent">Get Quote</button>
       </div>
 
 <!-- Modal -->
@@ -182,6 +219,7 @@
 </template>
 
 <script>
+
 import axios from "axios";
 export default {
   name: "HelloWorld",
@@ -213,11 +251,24 @@ export default {
       this.products = await cat_result.data.data;
       console.log(await cat_result.data);
     },
+//     $('#datepicker').datepicker();
+// $('#datepicker').on('changeDate', function() {
+//     $('#my_hidden_input').val(
+//         $('#datepicker').datepicker('getFormattedDate')
+//     );
+// });
+
   },
 };
 </script>
 
 <style scoped>
+button.btn.link {
+    display: none;
+}
+button.btn.link.active {
+    display: initial;
+}
 .rating > input{ display:none;}
 .sidebarBx {
     text-align: left;
@@ -397,5 +448,136 @@ span.value.upper::before {content: "- €"; display: inline-block; margin-left: 
 .min-max-slider > .legend {display: flex; justify-content: space-between;}
 .min-max-slider > .legend > * {font-size: small; opacity: 0.25;}
 .min-max-slider > input {cursor: pointer; position: absolute;}
-
+.selectDatepicker.active {display:block}
+.selectDatepicker,.selectEventStart {
+    display: none;
+}
+table.ui-datepicker-calendar td a {
+    color: #6e6e6e;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+table.ui-datepicker-calendar th{
+    padding: 3px 8px;
+    color: #6e6e6e;
+}
+a.ui-datepicker-next.ui-corner-all {
+    float: right;
+	padding-right: 10px;
+	cursor: pointer;
+}
+a.ui-datepicker-prev.ui-corner-all {
+    padding-left: 10px;
+	cursor: pointer;
+}
+.ui-datepicker-title {
+    text-align: center;
+    border: 1px solid #dfdfdf;
+}
+.ui-datepicker-inline.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all {
+    border: 1px solid #dfdfdf;
+}
+div#datepicker {
+    max-width: 273px;
+    margin: 0 auto;
+    border: 1px solid #dfdfdf;
+    margin-top: 30px;
+    box-shadow: 3px 4px #f3f3f3;
+    padding: 10px;
+}
+.topbar-item.active { opacity: 1; }
+.topbar-item {
+    background: #5067eb;
+    height: 10px;
+    width: 100%;
+    border-radius: 10px;
+    opacity: .4;
+}
+.topProBar .progress-bar {
+    background: #5067eb;
+}
+.topProBar {
+    justify-content: center;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.btn-space .btn+.btn {
+    margin-left: 16px;
+}
+.btn.primary {
+    color: #fff;
+    border-color: transparent;
+    background: #5067eb;
+}
+select#exampleFormControlSelect1 {
+    height: 40px;
+}
+.btn-space .btn {
+height: 40px;
+    width: calc(50% - 50px);
+}
+button.btn.link {
+    color: #000;
+    background: #fff;
+    border-color: #5067eb;
+}
+.btn-space.with-border {
+    border-top: 1px solid #e2e2e2;
+    padding: 25px 35px 4px;
+    margin-top: 40px;
+    background: #fafafa;
+	text-align: center;
+}
+.add-button-container.d-flex {
+    display: flex;
+    justify-content: right;
+}
+button.btn.text.blue-text.small.ml-auto {
+    color: #5067eb;
+    text-decoration: underline;
+    background: transparent;
+}
+.form-group label {
+    font-size: 15px;
+    margin-bottom: 11px;
+    display: inline-block;
+}
+.btn-space.with-border {
+    border-top: 1px solid #e2e2e2;
+    padding: 25px 35px 25px 35px;
+    margin-top: 40px;
+    background: #fafafa;
+}
+div#SelectanEvent .modal-dialog iframe {
+    height: 80vh;
+}
+div#SelectanEvent .modal-dialog {
+    max-width: 500px;
+}
+#SelectanEvent .modal-body {
+    padding: 0;
+}
+.modal-header.with-sub-header {
+    padding-top: 30px;
+    padding-bottom: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    flex-direction: column;
+    align-items: center;
+}
+h4.modal-title {
+    font-size: 26px;	
+	text-align:center;
+}
+.form-group,.add-button-container.d-flex {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+.form-group{
+    padding-top: 25px;
+    padding-bottom: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
 </style>
