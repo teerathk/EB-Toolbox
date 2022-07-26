@@ -1,9 +1,12 @@
 <template>
 
 <!--START MODAL -->
-<div class="modal fade" id="SelectanEvent" tabindex="-1" role="dialog" aria-labelledby="SelectanEvent" aria-hidden="true">
+<div class="modal fade" id="SelectanEvent" tabindex="-1" role="dialog" aria-labelledby="SelectanEvent" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog"> 
       <div class="modal-content"> 
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
         <!-- START:: Modal content-->
         <!-- start header  -->
         <div class="modal-header with-sub-header" >
@@ -17,11 +20,22 @@
         <!-- end header  -->
         <div class="selectDatepicker active" >
 			<h4 class="modal-title">Select Date Of Event</h4>		
-				<div id="datepicker" data-date="12/03/2012"></div>
-					<input type="hidden" id="my_hidden_input">
+           <datepicker :inline="true"></datepicker>
+				<!-- <div id="datepicker" data-date="12/03/2012"></div>
+					<input type="hidden" id="my_hidden_input"> -->
 		</div>
     <!-- body START -->
-    
+    <div class="selectEventStart ">
+				
+			<div class="form-group">
+    <label for="exampleFormControlSelect1"><h4 class="modal-title">When Does Your Event Start?</h4>	</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option value="00:00">12:00 AM</option>
+      <option value="00:30">12:30 AM</option>
+      <option value="01:00">01:00 AM</option>
+    </select>
+  </div>
+		</div>
     <!-- END body -->
     <!-- START:: FOOTER -->
     <div class="modal-body">
@@ -53,7 +67,7 @@
               <ul class="navbar-nav">
                 <!---->
                 <li
-                  class="nav-item"
+                  class="nav-item has-child"
                   v-for="(obj, index) in categories"
                   :key="index"
                 >
@@ -148,11 +162,11 @@
       <div class="col-4" v-for="(obj, index) in products" :key="index">
         <div class="eventboxtool-item">
           <div class="row">
-            <div class="col-12">
+            <div class="col-12 no-gutters">
               <div class="image-section">
                                     <img 
                                     alt="Product"
-                  class="product-image-tem img-fluid" style='max-width: 75%; height: auto; border: 1px solid;'
+                  class="product-image-tem img-fluid"
                       :src="obj.defaultImageUrl"
                       @error="
                         $event.target.src =
@@ -219,13 +233,16 @@
 </template>
 
 <script>
-
+// import Datepicker from 'vuejs-datepicker';
 import axios from "axios";
 export default {
   name: "HelloWorld",
   props: {
     msg: String,
   },
+  // components: {
+  //   Datepicker
+  // },
   data() {
     return {
       categories: [],
@@ -263,9 +280,21 @@ export default {
 </script>
 
 <style scoped>
-button.btn.link {
-    display: none;
+div#SelectanEvent button.close {
+    position: fixed;
+    right: 22px;
+    top: 22px;
+    font-weight: normal;
+    font-size: 35px;
+    color: #000;
+    opacity: 1;
 }
+body{font-family:Montserrat,sans-serif}
+.col-12.no-gutters {
+    padding-right: 0;
+    padding-left: 0;
+}
+
 button.btn.link.active {
     display: initial;
 }
@@ -387,27 +416,58 @@ ul.navbar-nav {
 }
 ul.navbar-nav li.nav-item a {
     color: #fff;
-    font-size: 15px;
+    font-family: Montserrat,sans-serif;
+    font-size: 13px;
     padding:8px 9px;
 }
 section.top-subheader {
     background: rgba(41,29,137,.8);
     width: 100%;
 }
+ul.navbar-nav li.nav-item ul.dropdown-menu li a {
+    display: block;
+}
+ul.navbar-nav li a:hover {
+    font-weight: bold;
+}
 span.amountlisting-tem {
     font-weight: bold;
+    float: left;
+    font-size: 24px;
 }
 .form-check.listitme-p input.form-check-input {
     width: 20px;
     height: 20px;
     float: right;;
 }
+img.product-image-tem {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
 h6.product-category-tem {
     padding: 10px 0 0 0;
+    color: rgba(0,0,0,.7);
+    font-weight: 600;
+    margin-bottom: 8px;
+    padding-right: 8px;
+    line-height: 1.3;
+    font-family: Montserrat,sans-serif;
+    word-break: break-word;
+}
+button.btn.btn-info.btn-lg {
+    background: rgba(41,29,137,.8);
+    border-color: rgba(41,29,137,.8);
 }
 .eventboxtool-item {
+  text-align:left;
+    border-radius: 5px;
+    box-shadow: 1px 5px 15px 1px rgb(135 135 135 / 7%);
+    background-color: #fff;
+    padding-bottom: 2px;
+    height: 100%;
+    cursor: pointer;
+    overflow: hidden;
     padding: 10px;
-    background: #fff;
     margin-bottom: 20px;
 }
 div#eventboxCat .modal-content {
@@ -448,10 +508,14 @@ span.value.upper::before {content: "- €"; display: inline-block; margin-left: 
 .min-max-slider > .legend {display: flex; justify-content: space-between;}
 .min-max-slider > .legend > * {font-size: small; opacity: 0.25;}
 .min-max-slider > input {cursor: pointer; position: absolute;}
-.selectDatepicker.active {display:block}
+
 .selectDatepicker,.selectEventStart {
     display: none;
 }
+.selectEventStart.active {
+    display: block;
+}
+.selectDatepicker.active {display:block!important}
 table.ui-datepicker-calendar td a {
     color: #6e6e6e;
     text-align: center;
@@ -515,7 +579,7 @@ select#exampleFormControlSelect1 {
 }
 .btn-space .btn {
 height: 40px;
-    width: calc(50% - 50px);
+    width: 90px;
 }
 button.btn.link {
     color: #000;
@@ -561,14 +625,29 @@ div#SelectanEvent .modal-dialog {
 .modal-header.with-sub-header {
     padding-top: 30px;
     padding-bottom: 15px;
-    padding-left: 35px;
-    padding-right: 35px;
+    padding-left: 55px;
+    padding-right: 55px;
     flex-direction: column;
     align-items: center;
 }
+li.nav-item.has-child:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    vertical-align: baseline;
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    transform: rotate(136deg);
+    color: #fff;
+    right: 0;
+    top: 13px;
+}
 h4.modal-title {
-    font-size: 26px;	
-	text-align:center;
+  font-size: 22px;
+    text-align: center;
+    font-family: Montserrat,sans-serif;
 }
 .form-group,.add-button-container.d-flex {
     padding-left: 35px;
