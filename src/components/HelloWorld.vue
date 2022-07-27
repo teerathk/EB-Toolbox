@@ -20,9 +20,9 @@
         <!-- end header  -->
         <div class="selectDatepicker active" >
 			<h4 class="modal-title">Select Date Of Event</h4>		
-           <datepicker :inline="true"></datepicker>
-				<!-- <div id="datepicker" data-date="12/03/2012"></div>
-					<input type="hidden" id="my_hidden_input"> -->
+           <!-- <datepicker :inline="true"></datepicker> -->
+				<div id="datepicker" data-date="12/03/2012"></div>
+					<input type="hidden" id="my_hidden_input">
 		</div>
     <!-- body START -->
     <div class="selectEventStart ">
@@ -252,6 +252,12 @@ export default {
   async mounted() {
     this.getCategories();
     this.getProducts();
+     $('#datepicker').datepicker();
+      $('#datepicker').on('changeDate', function() {
+      $('#my_hidden_input').val(
+        $('#datepicker').datepicker('getFormattedDate')
+      );
+    });
   },
   methods: {
     async getCategories() {
@@ -268,13 +274,7 @@ export default {
       this.products = await cat_result.data.data;
       console.log(await cat_result.data);
     },
-//     $('#datepicker').datepicker();
-// $('#datepicker').on('changeDate', function() {
-//     $('#my_hidden_input').val(
-//         $('#datepicker').datepicker('getFormattedDate')
-//     );
-// });
-
+   
   },
 };
 </script>
