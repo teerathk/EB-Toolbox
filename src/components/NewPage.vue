@@ -366,7 +366,7 @@
 // import Datepicker from 'vuejs-datepicker';
 import axios from "axios";
 export default {
-  name: "HelloWorld",
+  name: "NewPage",
   props: {
     msg: String,
   },
@@ -386,7 +386,7 @@ export default {
   },
   methods: {
     async getCategories() {
-      alert("asdfasdf")
+        //alert("asdf;lkj")
       let cat_result = await axios.get(
         "https://api.myeventbox.com/common/categories"
       );
