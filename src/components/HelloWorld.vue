@@ -39,34 +39,33 @@
           </div>
         </div>
         <!-- end header  -->
-        <div class="selectDatepicker active">
-          <h4 class="modal-title">Select Date Of Event</h4>
-          <datepicker :inline="true"></datepicker>
-          <!-- <div id="datepicker" data-date="12/03/2012"></div>
-					<input type="hidden" id="my_hidden_input"> -->
-        </div>
-        <!-- body START -->
-        <div class="selectEventStart">
-          <div class="form-group">
-            <label for="exampleFormControlSelect1"
-              ><h4 class="modal-title">When Does Your Event Start?</h4>
-            </label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option value="00:00">12:00 AM</option>
-              <option value="00:30">12:30 AM</option>
-              <option value="01:00">01:00 AM</option>
-            </select>
-          </div>
-        </div>
-        <!-- END body -->
-        <!-- START:: FOOTER -->
-        <div class="modal-body">
-          <div class="btn-space with-border">
-            <button class="btn link" type="button">Back</button>
-            <button class="btn primary" type="button">Next</button>
-          </div>
-        </div>
-        <!-- END :: FOOTER -->
+        <div class="selectDatepicker active" >
+			<h4 class="modal-title">Select Date Of Event</h4>		
+           <!-- <datepicker :inline="true"></datepicker> -->
+				<div id="datepicker" data-date="12/03/2012"></div>
+					<input type="hidden" id="my_hidden_input">
+		</div>
+    <!-- body START -->
+    <div class="selectEventStart ">
+				
+			<div class="form-group">
+    <label for="exampleFormControlSelect1"><h4 class="modal-title">When Does Your Event Start?</h4>	</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option value="00:00">12:00 AM</option>
+      <option value="00:30">12:30 AM</option>
+      <option value="01:00">01:00 AM</option>
+    </select>
+  </div>
+		</div>
+    <!-- END body -->
+    <!-- START:: FOOTER -->
+    <div class="modal-body">
+				<div class="btn-space with-border">
+					<button class="btn link " type="button">Back</button>
+					<button class="btn primary" type="button">Next</button>
+				</div>
+		</div>
+    <!-- END :: FOOTER -->
         <!-- END::   Modal content-->
       </div>
     </div>
@@ -383,6 +382,12 @@ export default {
   async mounted() {
     this.getCategories();
     this.getProducts();
+     $('#datepicker').datepicker();
+      $('#datepicker').on('changeDate', function() {
+      $('#my_hidden_input').val(
+        $('#datepicker').datepicker('getFormattedDate')
+      );
+    });
   },
   methods: {
     async getCategories() {
@@ -412,183 +417,7 @@ phone: "+1 3333333333"
       this.products = await cat_result.data.data;
       console.log(await cat_result.data);
     },
-    async postQuotes() {
-      alert("Posting...");
-      // let cat_quote = await axios.post(
-
-      // );
-
-      this.productsQuotes.forEach((element) => {
-        axios
-          .post("https://api.myeventbox.com/events/PartialEvent", {
-            anything_else: "Test",
-            category: "5eb358f7b27c7a0033a649ac",
-            categoryName: "Food + Beverage",
-            city: "Downers Grove",
-            citycode: "Downers Grove",
-            companyid: "62d03d4ded906c1449fbd781",
-            confirmpassword: "Test@123",
-            country: "United States",
-            countrycode: "US",
-            end_date: null,
-            event: null,
-            eventLable: "toolboxtestingevent",
-            event_name: "Toolbox Testing Event",
-            event_name_id: null,
-            event_type: {
-              _id: "5eb358f7b27c7a0033a649b2",
-              name: "Birthday / Anniversary",
-            },
-            guest_count: null,
-            latitude: "41.796636",
-            location: "First FL, 4949 Forest Ave, Downers Grove, IL 60515, USA",
-            longitude: "-88.011678",
-            mobilecode: "+1",
-            new_event: true,
-            password: "Test@123",
-            planner: "",
-            planner_email: "teerathtest1234@plego.com",
-            planner_fullname: "TEERATH KUMAR",
-            planner_id: "62e2c6654c1186259267ef9e",
-            planner_mobile: "3333333333",
-            price: 56,
-            product_id: element, // 62d84b9caf37a2745aeae6cf
-            product_name: "Test Product (Show Evan)", // Demo Product
-            providing_graphic: null,
-            quantity: 1,
-            selectedDialCode: null,
-            selected_budget: null,
-            selected_guest: null,
-            selected_hour: null,
-            singuplastName: "",
-            startDate: null,
-            start_date: "07-29-2022",
-            start_time: "12:00",
-            state: "Illinois",
-            statecode: "IL",
-            sub_category: "5eb358f7b27c7a0033a6494c",
-            vendor: "62d03d4ded906c1449fbd782",
-            vendorname: "plego",
-            zipcode: "60515",
-          })
-          .then((result) => {
-            alert("Posted Successfully");
-            console.log(result.data);
-          });
-      });
-      // axios
-      //   .post("https://api.myeventbox.com/events/PartialEvent", {
-      //     anything_else: "Test",
-      //     category: "5eb358f7b27c7a0033a649ac",
-      //     categoryName: "Food + Beverage",
-      //     city: "Downers Grove",
-      //     citycode: "Downers Grove",
-      //     companyid: "62d03d4ded906c1449fbd781",
-      //     confirmpassword: "Test@123",
-      //     country: "United States",
-      //     countrycode: "US",
-      //     end_date: null,
-      //     event: null,
-      //     eventLable: "toolboxtestingevent",
-      //     event_name: "Toolbox Testing Event",
-      //     event_name_id: null,
-      //     event_type: {
-      //       _id: "5eb358f7b27c7a0033a649b2",
-      //       name: "Birthday / Anniversary",
-      //     },
-      //     guest_count: null,
-      //     latitude: "41.796636",
-      //     location: "First FL, 4949 Forest Ave, Downers Grove, IL 60515, USA",
-      //     longitude: "-88.011678",
-      //     mobilecode: "+1",
-      //     new_event: true,
-      //     password: "Test@123",
-      //     planner: "",
-      //     planner_email: "teerathtest1234@plego.com",
-      //     planner_fullname: "TEERATH KUMAR",
-      //     planner_id: "62e2c6654c1186259267ef9e",
-      //     planner_mobile: "3333333333",
-      //     price: 56,
-      //     product_id: "62dada6a74894f2336c5a25b", // 62d84b9caf37a2745aeae6cf
-      //     product_name: "Test Product (Show Evan)", // Demo Product
-      //     providing_graphic: null,
-      //     quantity: 1,
-      //     selectedDialCode: null,
-      //     selected_budget: null,
-      //     selected_guest: null,
-      //     selected_hour: null,
-      //     singuplastName: "",
-      //     startDate: null,
-      //     start_date: "07-29-2022",
-      //     start_time: "12:00",
-      //     state: "Illinois",
-      //     statecode: "IL",
-      //     sub_category: "5eb358f7b27c7a0033a6494c",
-      //     vendor: "62d03d4ded906c1449fbd782",
-      //     vendorname: "plego",
-      //     zipcode: "60515",
-      //   })
-      //   .then((result) => {
-      //     alert("Posted Successfully");
-      //     console.log(result.data);
-      //   });
-      // axios
-      //   .post("https://api.myeventbox.com/events/PartialEvent", {
-      //     anything_else: "Test",
-      //     category: "5eb358f7b27c7a0033a649ac",
-      //     categoryName: "Food + Beverage",
-      //     city: "Downers Grove",
-      //     citycode: "Downers Grove",
-      //     companyid: "62d03d4ded906c1449fbd781",
-      //     confirmpassword: "Test@123",
-      //     country: "United States",
-      //     countrycode: "US",
-      //     end_date: null,
-      //     event: null,
-      //     eventLable: "toolboxtestingevent",
-      //     event_name: "Toolbox Testing Event",
-      //     event_name_id: null,
-      //     event_type: {
-      //       _id: "5eb358f7b27c7a0033a649b2",
-      //       name: "Birthday / Anniversary",
-      //     },
-      //     guest_count: null,
-      //     latitude: "41.796636",
-      //     location: "First FL, 4949 Forest Ave, Downers Grove, IL 60515, USA",
-      //     longitude: "-88.011678",
-      //     mobilecode: "+1",
-      //     new_event: true,
-      //     password: "Test@123",
-      //     planner: "",
-      //     planner_email: "teerathtest1234@plego.com",
-      //     planner_fullname: "TEERATH KUMAR",
-      //     planner_id: "62e2c6654c1186259267ef9e",
-      //     planner_mobile: "3333333333",
-      //     price: 56,
-      //     product_id: "62d84b9caf37a2745aeae6cf",
-      //     product_name: "Demo Product",
-      //     providing_graphic: null,
-      //     quantity: 1,
-      //     selectedDialCode: null,
-      //     selected_budget: null,
-      //     selected_guest: null,
-      //     selected_hour: null,
-      //     singuplastName: "",
-      //     startDate: null,
-      //     start_date: "07-29-2022",
-      //     start_time: "12:00",
-      //     state: "Illinois",
-      //     statecode: "IL",
-      //     sub_category: "5eb358f7b27c7a0033a6494c",
-      //     vendor: "62d03d4ded906c1449fbd782",
-      //     vendorname: "plego",
-      //     zipcode: "60515",
-      //   })
-      //   .then((result) => {
-      //     alert("Posted Successfully");
-      //     console.log(result.data);
-      //   });
-    },
+   
   },
 };
 </script>
