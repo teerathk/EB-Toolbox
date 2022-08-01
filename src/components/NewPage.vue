@@ -1,4 +1,58 @@
 <template>
+<!-- START MODAL FOR ADD BTN -->
+<div
+    class="modal fade"
+    id="clikedAddBtn"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="SelectanEvent"
+    aria-hidden="true"
+    data-backdrop="static"
+    data-keyboard="false"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button
+          type="button"
+          class="close bteb_popup"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <!-- START:: Modal content-->
+       
+       <div class="evtb_addBtn_box">
+        <div class="evtb_addbtn_area">
+          <!-- left -->
+          <div class="evtb_addbtn_left">
+            <h3 class="evtb_addbtn_title">7 Passed Hors D'oeuvres</h3>
+            <!-- <div class="ebt-lbl-box" data-v-140022cf=""><p class="eventBox_Price" data-v-140022cf="">$45</p><div class="form-check listitme-p" data-v-140022cf=""><input class="form-check-input" type="checkbox" id="defaultCheck1" data-v-140022cf=""></div></div> -->
+            <p class="evtb_dsc">7 menu items including servers and prep staff Menu can be customized.</p>
+          </div>
+          <!-- end:left -->
+          <!-- right -->
+          <div class="evtb_addbtn_right">
+              <div class="evtb_addbtn_image">
+                <img class="evnt_img-detail img-fluid" src="https://sharetribe.imgix.net/5d49270c-e5cf-43c2-a9c0-1e920fe99ce7/61f49c2b-da27-4249-a685-7bb13d55fe61?auto=format&amp;fit=clip&amp;h=750&amp;w=750&amp;s=a8eaf9cf6c8126f8380e688e25f056bf">
+              </div>
+              <div class="evtb_btn-number">
+                <button type="button" class="btn btn_ebtb">
+                <span>Add to cart</span>
+                <span class="AddExtrasToCartFormDesktop_sumPrice__1xEi2">$0</span>
+                </button>
+              </div>
+          </div>
+          <!-- end right -->
+        </div>
+       </div>
+        
+        <!-- END::   Modal content-->
+      </div>
+    </div>
+  </div>
+  <!-- END MODAL  -->
+<!-- END :: MODAL FOR ADD BTN -->
   <!--START MODAL -->
   <div
     class="modal fade"
@@ -77,248 +131,307 @@
       <div class="col-12">
         <div class="eventbox-toolbox-header">
           <h2 class="text-center">EVENTBOX -TOOLBOX</h2>
+          <div class="form_group seach_event_toolbox">
+                <input type="text" class="form-control" id="" placeholder="Search..">
+              </div>
         </div>
       </div>
-
-      <!-- start menu -->
-      <section class="top-subheader">
-        <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg">
-            <button class="navbar-toggler" type="button">☰</button>
-            <div class="collapse navbar-collapse">
-              <ul class="navbar-nav">
-                <!---->
-                <li
-                  class="nav-item has-child"
-                  v-for="(obj, index) in categories"
-                  :key="index"
-                >
-                  <a href="#" class="nav-link lg-device-nav-link">{{
-                    obj.name
-                  }}</a>
-                  <!---->
-                  <ul class="dropdown-menu">
-                    <li
-                      v-for="(sub_obj, sub_index) in obj.children"
-                      :key="sub_index"
-                    >
-                      <a href="#">{{ sub_obj.name }}</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </section>
-      <!-- end menu -->
     </div>
 
     <div class="container">
-      <div class="row">
-        <div class="col-12"><div class="page-title"></div></div>
-        <div class="col-3">
-          <div class="sidebarBx">
-            <!-- START:: COMPONENT -->
-            <div class="filter-head">
-              <div class="filter-title">Filters</div>
-              <button class="btn text blue-text no-underline">Clear All</button>
-            </div>
-            <div class="filter-container">
-              <p class="title info-section">
-                Location:
-                <img
-                  alt="Info"
-                  class="info-icon ml-2"
-                  src="https://www.myeventbox.com/assets/images/icon-info.svg"
-                />
-                <span _ngcontent-serverapp-c5="" class="info-text d-none"
-                  >To get tailored results, please enter location here
-                  <span _ngcontent-serverapp-c5="" class="nav-close-btn"
-                    >✕</span
-                  ></span
-                >
-              </p>
-              <div class="input-with-sign">
-                <app-shared-google-location
-                  _ngcontent-serverapp-c5=""
-                  class="form-control"
-                >
-                  <form
-                    class="
-                      location-input-form
-                      ng-untouched ng-pristine ng-valid
-                    "
-                    novalidate=""
-                  >
-                    <input
-                      autocomplete="off"
-                      class="
-                        google-loc
-                        form-control
-                        ng-untouched ng-pristine ng-valid
-                        pac-target-input
-                      "
-                      formcontrolname="location"
-                      placeholder="Location"
-                      type="text"
-                      title=""
-                    />
-                    <button class="btn text">
-                      <img
-                        alt="Location"
-                        src="https://www.myeventbox.com/assets/images/location.svg"
-                      />
-                    </button>
-                  </form>
-                </app-shared-google-location>
-              </div>
-            </div>
-            <!-- END:: COMPONENT -->
-            <div class="divider"></div>
-            <!-- START:: COMPONENT -->
-            <div class="boxListing">
-              <p class="title">Choose the Radius</p>
-              <div class="check-container">
-                <input
-                  formcontrolname="radius"
-                  type="radio"
-                  disabled=""
-                  id="25"
-                  class="ng-untouched ng-pristine"
-                /><label _ngcontent-serverapp-c5="" for="25"
-                  >Within 25 Miles</label
-                >
-              </div>
-              <div class="check-container">
-                <input
-                  formcontrolname="radius"
-                  type="radio"
-                  disabled=""
-                  id="25"
-                  class="ng-untouched ng-pristine"
-                /><label _ngcontent-serverapp-c5="" for="25"
-                  >Within 40 Miles</label
-                >
-              </div>
-            </div>
-            <!-- END:: COMPONENT -->
-            <div class="divider"></div>
-            <!-- START:: COMPONENT -->
-            <div class="boxListing">
-              <p _ngcontent-serverapp-c5="" class="title">Search by</p>
-              <div class="check-container">
-                <input
-                  formcontrolname="radius"
-                  type="radio"
-                  disabled=""
-                  id="25"
-                  class="ng-untouched ng-pristine"
-                /><label _ngcontent-serverapp-c5="" for="25"
-                  >Within 25 Miles</label
-                >
-              </div>
-              <div class="check-container">
-                <input
-                  formcontrolname="radius"
-                  type="radio"
-                  disabled=""
-                  id="25"
-                  class="ng-untouched ng-pristine"
-                /><label _ngcontent-serverapp-c5="" for="25"
-                  >Within 50 Miles</label
-                >
-              </div>
-            </div>
-            <!-- END:: COMPONENT -->
-            <div class="divider"></div>
-            <!-- START:: COMPONENT -->
-            <div class="boxListing">
-              <p _ngcontent-serverapp-c5="" class="title">Price (USD)</p>
-              <div class="min-max-slider" data-legendnum="2">
-                <label for="min">Minimum price</label>
-                <input
-                  id="min"
-                  class="min"
-                  name="min"
-                  type="range"
-                  step="1"
-                  min="0"
-                  max="3000"
-                />
-                <label for="max">Maximum price</label>
-                <input
-                  id="max"
-                  class="max"
-                  name="max"
-                  type="range"
-                  step="1"
-                  min="0"
-                  max="3000"
-                />
-              </div>
-            </div>
-            <!-- END:: COMPONENT -->
-
-            <div class="divider"></div>
-          </div>
-        </div>
-        <div class="col-9">
+      <div class="row">       
+        <div class="col-8">
           <div class="row">
-            <div class="col-4" v-for="(obj, index) in products" :key="index">
-              <div class="eventboxtool-item">
-                <div class="row">
-                  <div class="col-12 no-gutters">
-                    <div class="image-section">
-                      <img
-                        alt="Product"
-                        class="product-image-tem img-fluid"
-                        :src="obj.defaultImageUrl"
-                        @error="
-                          $event.target.src =
-                            'https://posh-marketplace.plego.pro/img/product-images/997/no_image.png'
-                        "
-                      />
+            <!-- START:: BOX -->
+              <div class="col-sm-6 col-12">
+                <div class="eventBox_item">
+                  <div class="eventBox_item_left">
+                    <!-- left top -->
+                    <div class="ebt-lt-bx">
+                      <h3 class="eventBox_title_area">5 Passed Hors D'oeuvres</h3>
+                      <div class="eventBox_title_disc" >
+                        <span class="">5 menu items  including servers and prep staff Items can be customized.</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-12">
-                    <h6 class="product-category-tem">{{ obj.name }}</h6>
-                    <p class="product-category">
-                      {{ obj.description }}
-                    </p>
-                  </div>
-                  <div class="col-8">
-                    <span class="amountlisting-tem">${{ obj.price }}</span>
-                  </div>
-                  <div class="col-4 text-right">
-                    <div class="form-check listitme-p">
-                      <input
-                        v-model="productsQuotes"
-                        class="form-check-input"
+                    <!-- left top -->
+                    <!-- bottom left -->
+                    <div class="ebt-lbl-box">
+                      <p class="eventBox_Price">$45</p>                    
+                      <div class="form-check listitme-p">
+                      <input class="form-check-input"
                         type="checkbox"
-                        :value="obj.id"
                         id="defaultCheck1"
                       />
                     </div>
+                      
+                      </div>
+                    <!-- bottom left -->
+                  </div>
+                  
+                  <div class="eventBox_item_right">
+                      <div class="SectionExtrasMaybe_itemThumbnail__BOgPo">
+                        <img class="CloudinaryImage_lazyImage__2Rrfp SectionExtrasMaybe_itemImage__2C9R6" width="126" height="127" src="https://res.cloudinary.com/eventors/image/fetch/c_lfill,g_face:center,h_127,q_auto:best,w_126/https://sharetribe.imgix.net/5d49270c-e5cf-43c2-a9c0-1e920fe99ce7/61f49c1b-ec83-47e0-809a-5da54f7f950e%3Fauto%3Dformat%26fit%3Dclip%26h%3D750%26w%3D750%26s%3Df961b9aa1f1a09792edd926096c27d0c.jpg">
+                        <div class="SectionExtrasMaybe_extraAddBtnWrapper__22BOr">
+                          <button data-toggle="modal" data-target="#clikedAddBtn" type="button" class="SectionExtrasMaybe_extraAddBtn__2By5D">
+                            <span class="SectionExtrasMaybe_plus__1BWh5">+</span>
+                            <span>Add</span>
+                          </button>
+                        </div>
+                      </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <!-- END:: BOX   -->
+            <!-- START:: BOX -->
+              <div class="col-sm-6 col-12">
+                <div class="eventBox_item">
+                  <div class="eventBox_item_left">
+                    <!-- left top -->
+                    <div class="ebt-lt-bx">
+                      <h3 class="eventBox_title_area">5 Passed Hors D'oeuvres</h3>
+                      <div class="eventBox_title_disc" >
+                        <span class="">5 menu items  including servers and prep staff Items can be customized.</span>
+                      </div>
+                    </div>
+                    <!-- left top -->
+                    <!-- bottom left -->
+                    <div class="ebt-lbl-box">
+                      <p class="eventBox_Price">$45</p>                    
+                      <div class="form-check listitme-p">
+                      <input class="form-check-input"
+                        type="checkbox"
+                        id="defaultCheck1"
+                      />
+                    </div>
+                      
+                      </div>
+                    <!-- bottom left -->
+                  </div>
+                  
+                  <div class="eventBox_item_right">
+                      <div class="SectionExtrasMaybe_itemThumbnail__BOgPo">
+                        <img class="CloudinaryImage_lazyImage__2Rrfp SectionExtrasMaybe_itemImage__2C9R6" width="126" height="127" src="https://res.cloudinary.com/eventors/image/fetch/c_lfill,g_face:center,h_127,q_auto:best,w_126/https://sharetribe.imgix.net/5d49270c-e5cf-43c2-a9c0-1e920fe99ce7/61f49c1b-ec83-47e0-809a-5da54f7f950e%3Fauto%3Dformat%26fit%3Dclip%26h%3D750%26w%3D750%26s%3Df961b9aa1f1a09792edd926096c27d0c.jpg">
+                        <div class="SectionExtrasMaybe_extraAddBtnWrapper__22BOr">
+                          <button data-toggle="modal" data-target="#clikedAddBtn" type="button" class="SectionExtrasMaybe_extraAddBtn__2By5D">
+                            <span class="SectionExtrasMaybe_plus__1BWh5">+</span>
+                            <span>Add</span>
+                          </button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <!-- END:: BOX   -->
+            <!-- START:: BOX -->
+              <div class="col-sm-6 col-12">
+                <div class="eventBox_item">
+                  <div class="eventBox_item_left">
+                    <!-- left top -->
+                    <div class="ebt-lt-bx">
+                      <h3 class="eventBox_title_area">5 Passed Hors D'oeuvres</h3>
+                      <div class="eventBox_title_disc" >
+                        <span class="">5 menu items  including servers and prep staff Items can be customized.</span>
+                      </div>
+                    </div>
+                    <!-- left top -->
+                    <!-- bottom left -->
+                    <div class="ebt-lbl-box">
+                      <p class="eventBox_Price">$45</p>                    
+                      <div class="form-check listitme-p">
+                      <input class="form-check-input"
+                        type="checkbox"
+                        id="defaultCheck1"
+                      />
+                    </div>
+                      
+                      </div>
+                    <!-- bottom left -->
+                  </div>
+                  
+                  <div class="eventBox_item_right">
+                      <div class="SectionExtrasMaybe_itemThumbnail__BOgPo">
+                        <img class="CloudinaryImage_lazyImage__2Rrfp SectionExtrasMaybe_itemImage__2C9R6" width="126" height="127" src="https://res.cloudinary.com/eventors/image/fetch/c_lfill,g_face:center,h_127,q_auto:best,w_126/https://sharetribe.imgix.net/5d49270c-e5cf-43c2-a9c0-1e920fe99ce7/61f49c1b-ec83-47e0-809a-5da54f7f950e%3Fauto%3Dformat%26fit%3Dclip%26h%3D750%26w%3D750%26s%3Df961b9aa1f1a09792edd926096c27d0c.jpg">
+                        <div class="SectionExtrasMaybe_extraAddBtnWrapper__22BOr">
+                          <button data-toggle="modal" data-target="#clikedAddBtn" type="button" class="SectionExtrasMaybe_extraAddBtn__2By5D">
+                            <span class="SectionExtrasMaybe_plus__1BWh5">+</span>
+                            <span>Add</span>
+                          </button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <!-- END:: BOX   -->
+            <!-- START:: BOX -->
+              <div class="col-sm-6 col-12">
+                <div class="eventBox_item">
+                  <div class="eventBox_item_left">
+                    <!-- left top -->
+                    <div class="ebt-lt-bx">
+                      <h3 class="eventBox_title_area">5 Passed Hors D'oeuvres</h3>
+                      <div class="eventBox_title_disc" >
+                        <span class="">5 menu items  including servers and prep staff Items can be customized.</span>
+                      </div>
+                    </div>
+                    <!-- left top -->
+                    <!-- bottom left -->
+                    <div class="ebt-lbl-box">
+                      <p class="eventBox_Price">$45</p>                    
+                      <div class="form-check listitme-p">
+                      <input class="form-check-input"
+                        type="checkbox"
+                        id="defaultCheck1"
+                      />
+                    </div>
+                      
+                      </div>
+                    <!-- bottom left -->
+                  </div>
+                  
+                  <div class="eventBox_item_right">
+                      <div class="SectionExtrasMaybe_itemThumbnail__BOgPo">
+                        <img class="CloudinaryImage_lazyImage__2Rrfp SectionExtrasMaybe_itemImage__2C9R6" width="126" height="127" src="https://res.cloudinary.com/eventors/image/fetch/c_lfill,g_face:center,h_127,q_auto:best,w_126/https://sharetribe.imgix.net/5d49270c-e5cf-43c2-a9c0-1e920fe99ce7/61f49c1b-ec83-47e0-809a-5da54f7f950e%3Fauto%3Dformat%26fit%3Dclip%26h%3D750%26w%3D750%26s%3Df961b9aa1f1a09792edd926096c27d0c.jpg">
+                        <div class="SectionExtrasMaybe_extraAddBtnWrapper__22BOr">
+                          <button data-toggle="modal" data-target="#clikedAddBtn" type="button" class="SectionExtrasMaybe_extraAddBtn__2By5D">
+                            <span class="SectionExtrasMaybe_plus__1BWh5">+</span>
+                            <span>Add</span>
+                          </button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <!-- END:: BOX   -->
+            <!-- START:: BOX -->
+              <div class="col-sm-6 col-12">
+                <div class="eventBox_item">
+                  <div class="eventBox_item_left">
+                    <!-- left top -->
+                    <div class="ebt-lt-bx">
+                      <h3 class="eventBox_title_area">5 Passed Hors D'oeuvres</h3>
+                      <div class="eventBox_title_disc" >
+                        <span class="">5 menu items  including servers and prep staff Items can be customized.</span>
+                      </div>
+                    </div>
+                    <!-- left top -->
+                    <!-- bottom left -->
+                    <div class="ebt-lbl-box">
+                      <p class="eventBox_Price">$45</p>                    
+                      <div class="form-check listitme-p">
+                      <input class="form-check-input"
+                        type="checkbox"
+                        id="defaultCheck1"
+                      />
+                    </div>
+                      
+                      </div>
+                    <!-- bottom left -->
+                  </div>
+                  
+                  <div class="eventBox_item_right">
+                      <div class="SectionExtrasMaybe_itemThumbnail__BOgPo">
+                        <img class="CloudinaryImage_lazyImage__2Rrfp SectionExtrasMaybe_itemImage__2C9R6" width="126" height="127" src="https://res.cloudinary.com/eventors/image/fetch/c_lfill,g_face:center,h_127,q_auto:best,w_126/https://sharetribe.imgix.net/5d49270c-e5cf-43c2-a9c0-1e920fe99ce7/61f49c1b-ec83-47e0-809a-5da54f7f950e%3Fauto%3Dformat%26fit%3Dclip%26h%3D750%26w%3D750%26s%3Df961b9aa1f1a09792edd926096c27d0c.jpg">
+                        <div class="SectionExtrasMaybe_extraAddBtnWrapper__22BOr">
+                          <button data-toggle="modal" data-target="#clikedAddBtn" type="button" class="SectionExtrasMaybe_extraAddBtn__2By5D">
+                            <span class="SectionExtrasMaybe_plus__1BWh5">+</span>
+                            <span>Add</span>
+                          </button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <!-- END:: BOX   -->
+            <!-- START:: BOX -->
+              <div class="col-sm-6 col-12">
+                <div class="eventBox_item">
+                  <div class="eventBox_item_left">
+                    <!-- left top -->
+                    <div class="ebt-lt-bx">
+                      <h3 class="eventBox_title_area">5 Passed Hors D'oeuvres</h3>
+                      <div class="eventBox_title_disc" >
+                        <span class="">5 menu items  including servers and prep staff Items can be customized.</span>
+                      </div>
+                    </div>
+                    <!-- left top -->
+                    <!-- bottom left -->
+                    <div class="ebt-lbl-box">
+                      <p class="eventBox_Price">$45</p>                    
+                      <div class="form-check listitme-p">
+                      <input class="form-check-input"
+                        type="checkbox"
+                        id="defaultCheck1"
+                      />
+                    </div>
+                      
+                      </div>
+                    <!-- bottom left -->
+                  </div>
+                  
+                  <div class="eventBox_item_right">
+                      <div class="SectionExtrasMaybe_itemThumbnail__BOgPo">
+                        <img class="CloudinaryImage_lazyImage__2Rrfp SectionExtrasMaybe_itemImage__2C9R6" width="126" height="127" src="https://res.cloudinary.com/eventors/image/fetch/c_lfill,g_face:center,h_127,q_auto:best,w_126/https://sharetribe.imgix.net/5d49270c-e5cf-43c2-a9c0-1e920fe99ce7/61f49c1b-ec83-47e0-809a-5da54f7f950e%3Fauto%3Dformat%26fit%3Dclip%26h%3D750%26w%3D750%26s%3Df961b9aa1f1a09792edd926096c27d0c.jpg">
+                        <div class="SectionExtrasMaybe_extraAddBtnWrapper__22BOr">
+                          <button data-toggle="modal" data-target="#clikedAddBtn" type="button" class="SectionExtrasMaybe_extraAddBtn__2By5D">
+                            <span class="SectionExtrasMaybe_plus__1BWh5">+</span>
+                            <span>Add</span>
+                          </button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <!-- END:: BOX   -->
+            
           </div>
         </div>
+        <!-- START:: SIDEBAR RIGHT -->
+          <div class="col-4">
+            <div class="Ebtb_sdebar_right">
+              <p class="ebtb_title">$500</p>
+              <span class="ebtb_sp">Starting price</span>
+              <!-- <h3 class="ebtb_bfsc">Book Full Service Catering</h3>
+              <span class="ebtb_aityc">Add items to your cart</span> -->
+              <p class="ebtb_sdatos">Select date and time of service</p>
+              <div class="form_group">
+                <input type="date" class="form-control" id="" placeholder="start date">
+              </div>
+                <div class="input_form_group">
+                <div class="form_group">
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>start time</option>
+                    <option>1:30 AM</option>
+                    <option>2:00 AM</option>
+                    <option>2:30 AM</option>
+                    <option>3:30 AM</option>
+                  </select>
+                </div>
+                <div class="form_group">
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>end time</option>
+                    <option>1:30 AM</option>
+                    <option>2:00 AM</option>
+                    <option>2:30 AM</option>
+                    <option>3:30 AM</option>
+                  </select>
+                </div>
+                </div>
+                <div class="form_group">
+                <input type="text" class="form-control" id="" placeholder="location">
+              </div>
+                <p class="ebtb_ywbcy">You won't be charged yet</p>
+                <div class="">
+                  <button type="button" class="btn btn_ebtb" data-v-140022cf="">Request to Quote </button>
+                </div>
+
+            </div>
+          </div>
+        <!-- END  :: SIDEBAR RIGHT -->
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12 text-right mb-5">
-        <button
-          type="button"
-          v-on:click="postQuotes"
-          class="btn btn-info btn-lg"
-        >
-          Get Quote
-        </button>
-      </div>
+    <div class="row mt-2">
+      
 
       <!-- Modal -->
       <div
@@ -594,6 +707,227 @@ phone: "+1 3333333333"
 </script>
 
 <style scoped>
+p.evtb_dsc {
+    margin-top: 22px;
+    padding-bottom: 22px;
+}
+.evtb_btn-number {
+    padding-top: 20px;
+    padding-bottom: 22px;
+}
+button.close.bteb_popup {
+    text-align: right;
+    padding: 10px 20px;
+    font-size: 36px;
+    font-weight: normal;
+    color: black;
+    border: 0px;
+    outline: none;
+}
+img.evnt_img-detail.img-fluid {
+    width: 100%;
+    object-fit: cover;
+    height: 250px;
+}
+.evtb_addBtn_box {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+div#clikedAddBtn .modal-dialog {
+    max-width: 732px;
+}
+img .evnt_img-detail{
+    width: 100%;
+    object-fit: cover;
+    height: 250px;
+}
+.evtb_addbtn_right {
+    width: 50%;
+}
+.evtb_addbtn_left {
+    flex: 1 1;
+    width: 50%;
+    text-align: left;
+}
+.evtb_addbtn_area {
+    display: flex;
+    grid-column-gap: 20px;
+    -webkit-column-gap: 20px;
+    -moz-column-gap: 20px;
+    column-gap: 20px;
+    justify-content: space-between;
+}
+button.btn.btn_ebtb {
+    background: rgba(41, 29, 137, 0.8);
+    color: #fff;
+    width: 100%;
+}
+.input_form_group .form_group {
+    width: 100%;
+}
+.input_form_group {
+    display: flex;
+    margin-top: 20px;
+    column-gap: 30px;
+    margin-bottom: 20px;
+}
+p.ebtb_ywbcy {
+    text-align: center;
+    margin-top: 20px;
+    color: #9b9b9b;
+}
+p.ebtb_ywbcy {
+    text-align: center;
+    margin-top: 20px;
+}
+p.ebtb_title {
+    margin: 0;
+    color:rgba(41, 29, 137, 0.8);
+    font-size: 34px;
+}
+span.AddExtrasToCartFormDesktop_sumPrice__1xEi2 {
+    position: absolute;
+    right: 35px;
+    color: #fff;
+}
+span.ebtb_sp {
+    margin-right: 10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: block;
+}
+h3.ebtb_bfsc {
+    color: #525252;
+    margin-top: 0;
+    margin-bottom: 9px;
+    line-height: 32px;
+    font-weight: 600;
+    font-size: 24px;
+}
+span.ebtb_aityc {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 600;
+    color: #c36;
+}
+p.ebtb_sdatos {
+    color: #8a8a8a;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 6px;
+    padding-bottom: 20px;
+}
+.Ebtb_sdebar_right {
+    text-align: left;
+    border-left: 1px solid #e7e7e7;
+    padding-left: 30px;
+}
+button.SectionExtrasMaybe_extraAddBtn__2By5D {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: hsla(0,0%,100%,.9);
+    position: relative;
+    z-index: 100;
+    height: 32px;
+    font-size: 15px;
+    min-width: 90%;
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+    transform: translateY(1px);
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+body {
+    background: #f2f2f2!important;
+}
+span.SectionExtrasMaybe_plus__1BWh5 {
+    position: absolute;
+    left: 7px;
+}
+.eventBox_item:hover button.SectionExtrasMaybe_extraAddBtn__2By5D {
+    opacity: 1;
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+}
+.ebt-lbl-box {
+    max-width: 100%;
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+}
+.ebt-lt-bx {
+    text-align: left;
+}
+.eventBox_title_disc {
+    margin: 10px 0 20px;
+    position: relative;
+}
+p.eventBox_Price {
+    margin: 0;
+    font-size: 16px;
+    word-wrap: break-word;
+    max-width: 50%;
+    line-height: 32px;
+}
+.SectionExtrasMaybe_extraAddBtnWrapper__22BOr {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.eventBox_item_right {
+    width: 200px;
+    margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.SectionExtrasMaybe_typeIcon__2DRmJ {
+    display: flex;
+    align-items: flex-end;
+}
+h3.eventBox_title_area {
+      font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.eventBox_title_disc span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 11px;
+}
+.eventBox_item {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    border-radius: 6px;
+    justify-content: space-between;
+    background-color: #fff;
+    cursor: pointer;
+}
+.eventBox_item_left {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 60%;
+    padding: 10px 5px 5px 15px;
+}
 div#SelectanEvent button.close {
   position: fixed;
   right: 22px;
@@ -603,8 +937,9 @@ div#SelectanEvent button.close {
   color: #000;
   opacity: 1;
 }
-body {
+.eventBToolbox {
   font-family: Montserrat, sans-serif;
+  background-color: #f2f2f2;
 }
 .col-12.no-gutters {
   padding-right: 0;
@@ -642,6 +977,12 @@ button.btn.link.active {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+}
+.form_group.seach_event_toolbox {
+    width: 650px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 p.title {
   font-weight: 500;
