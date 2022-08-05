@@ -153,7 +153,7 @@
 
 </div>
               <div class="evtb_btn-number">
-                <button type="button" class="btn btn_ebtb">
+                <button type="button" v-on:click="CheckboxEnable(index)" data-dismiss="modal" class="btn btn_ebtb">
                   <span>Add to Quote</span>
                   <span class="AddExtrasToCartFormDesktop_sumPrice__1xEi2"
                     >${{ obj.price }}</span
@@ -193,7 +193,7 @@
                         class="form-check-input"
                         type="checkbox"
                         :value="obj.id"
-                        id="defaultCheck1"
+                        :id="'defaultCheck1_' + index"
                       />
                     </div>
                   </div>
@@ -371,6 +371,11 @@ export default {
     this.getProducts();
   },
   methods: {
+    CheckboxEnable(index){
+      // alert(index)
+      document.getElementById("defaultCheck1_"+index).checked = true;
+      // jQuery("#defaultCheck1_"+index).prop("checked","true")
+    },
     async getCategories() {
       //alert("asdf;lkj")
       let cat_result = await axios.get(
