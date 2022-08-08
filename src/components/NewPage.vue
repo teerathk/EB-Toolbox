@@ -1,7 +1,47 @@
 <template>
-  <!-- START MODAL FOR ADD BTN -->
-  <!-- END MODAL  -->
-  <!-- END :: MODAL FOR ADD BTN -->
+  <!-- START MODAL FOR ADD to quote -->
+
+<!-- Modal -->
+<div class="modal fade" id="addtoQuoteBtn" tabindex="-1" role="dialog" aria-labelledby="addtoQuoteBtnLabel" aria-hidden="true" data-backdrop="static"
+    data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addtoQuoteBtnLabel">Request to Quote</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-6 col-12">
+              <div class="form-group-rtquoteBx">
+                <input type="text" class="form-control" id="" placeholder="First Name">
+              </div>
+            </div>
+            <div class="col-sm-6 col-12">
+              <div class="form-group-rtquoteBx">
+                 <input type="text" class="form-control" id="" placeholder="Last Name">
+              </div>
+            </div>
+        </div>
+       
+      <div class="form-group-rtquoteBx">
+        <input type="number" class="form-control" id="" placeholder="Phone Number">
+      </div>
+      <div class="form-group-rtquoteBx">
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Address">
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn_ebtb">Request to Quote</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- END  :: MODAL ADD TO QUOTE   -->
+  
+  
   <!--START MODAL -->
   <div
     class="modal fade"
@@ -153,7 +193,7 @@
 
 </div>
               <div class="evtb_btn-number">
-                <button type="button" v-on:click="CheckboxEnable(index)" data-dismiss="modal" class="btn btn_ebtb">
+                <button type="button" data-target="#addtoQuoteBtn" v-on:click="CheckboxEnable(index)" data-dismiss="modal" class="btn btn_ebtb">
                   <span>Add to Quote</span>
                   <span class="AddExtrasToCartFormDesktop_sumPrice__1xEi2"
                     >${{ obj.price }}</span
@@ -287,7 +327,7 @@
             <div class="">
               <button
                 type="button"
-                v-on:click="postQuotes"
+              data-toggle="modal" data-target="#addtoQuoteBtn"
                 class="btn btn_ebtb"
                 data-v-140022cf=""
               >
@@ -390,8 +430,8 @@ export default {
       https://api.myeventbox.com/signup/planner
       POST
       email: "teerath12@plego.com"
-firstName: "TEERATH"
-isVerified: true
+      firstName: "TEERATH"
+      isVerified: true
 lastName: "KUMAR"
 password: "Test@123"
 passwordConfirmation: "Test@123"
@@ -403,7 +443,8 @@ phone: "+1 3333333333"
       this.products = await cat_result.data.data;
       console.log(await cat_result.data);
     },
-    async postQuotes() {
+    async postQuotes() {},
+      async postQuotes_() {
       alert("Posting...");
       // let cat_quote = await axios.post(
 
@@ -585,6 +626,9 @@ phone: "+1 3333333333"
 </script>
 
 <style scoped>
+button.close {
+    outline: none;
+}
 p.evtb_dsc {
   margin-top: 22px;
   padding-bottom: 22px;
@@ -592,6 +636,10 @@ p.evtb_dsc {
 .evtb_btn-number {
   padding-top: 20px;
   padding-bottom: 22px;
+}
+.form-group-rtquoteBx {
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 button.close.bteb_popup {
   text-align: right;
@@ -996,6 +1044,7 @@ button.btn.btn-info.btn-lg {
   background: rgba(41, 29, 137, 0.8);
   border-color: rgba(41, 29, 137, 0.8);
 }
+
 .eventboxtool-item {
   text-align: left;
   border-radius: 5px;
