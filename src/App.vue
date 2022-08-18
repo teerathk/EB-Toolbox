@@ -1,26 +1,11 @@
-<template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <NewPage msg="Welcome to Your Vue.js App"/>
-</template>
+<script setup>
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 
-<script>
-import NewPage from './components/NewPage.vue'
-
-export default {
-  name: 'App',
-  components: {
-    NewPage
-  }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  <template>
+    <div id="app">      
+      <router-view></router-view>    
+    </div>
+  </template>
