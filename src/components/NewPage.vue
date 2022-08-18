@@ -1,47 +1,85 @@
 <template>
   <!-- START MODAL FOR ADD to quote -->
 
-<!-- Modal -->
-<div class="modal fade" id="addtoQuoteBtn" tabindex="-1" role="dialog" aria-labelledby="addtoQuoteBtnLabel" aria-hidden="true" data-backdrop="static"
-    data-keyboard="false">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addtoQuoteBtnLabel">Request to Quote</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-            <div class="col-sm-6 col-12">
-              <div class="form-group-rtquoteBx">
-                <input type="text" class="form-control" id="" placeholder="First Name">
-              </div>
-            </div>
-            <div class="col-sm-6 col-12">
-              <div class="form-group-rtquoteBx">
-                 <input type="text" class="form-control" id="" placeholder="Last Name">
-              </div>
-            </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="addtoQuoteBtn"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="addtoQuoteBtnLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+    data-keyboard="false"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addtoQuoteBtnLabel">Request to Quote</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-       
-      <div class="form-group-rtquoteBx">
-        <input type="number" class="form-control" id="" placeholder="Phone Number">
-      </div>
-      <div class="form-group-rtquoteBx">
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Address">
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn_ebtb">Request to Quote</button>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6 col-12">
+              <div class="form-group-rtquoteBx">
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  v-model="fname"
+                  placeholder="First Name"
+                />
+              </div>
+            </div>
+            <div class="col-sm-6 col-12">
+              <div class="form-group-rtquoteBx">
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  v-model="lname"
+                  placeholder="Last Name"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group-rtquoteBx">
+            <input
+              type="number"
+              class="form-control"
+              id=""
+              v-model="phone"
+              placeholder="Phone Number"
+            />
+          </div>
+          <div class="form-group-rtquoteBx">
+            <input
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              v-model="email"
+              placeholder="Email Address"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn_ebtb" v-on:click="postQuotes" >
+            Request to Quote
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
   <!-- END  :: MODAL ADD TO QUOTE   -->
-  
-  
+
   <!--START MODAL -->
   <div
     class="modal fade"
@@ -84,7 +122,7 @@
         <!-- end header  -->
         <div class="selectDatepicker active">
           <h4 class="modal-title">Select Date Of Event</h4>
-          
+
           <!-- <div id="datepicker" data-date="12/03/2012"></div>
 					<input type="hidden" id="my_hidden_input"> -->
         </div>
@@ -143,73 +181,76 @@
               v-for="(obj, index) in products"
               :key="index"
             >
+              <div
+                class="modal fade"
+                :id="'clikedAddBtn_' + index"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="SelectanEvent"
+                aria-hidden="true"
+                data-backdrop="static"
+                data-keyboard="false"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <button
+                      type="button"
+                      class="close bteb_popup"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <!-- START:: Modal content-->
 
-  <div
-    class="modal fade"
-    
-    :id="'clikedAddBtn_' + index"
-    
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="SelectanEvent"
-    aria-hidden="true"
-    data-backdrop="static"
-    data-keyboard="false"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <button
-          type="button"
-          class="close bteb_popup"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <!-- START:: Modal content-->
-
-        <div class="evtb_addBtn_box">
-          <div class="evtb_addbtn_area">
-            <!-- left -->
-            <div class="evtb_addbtn_left">
-              <h3 class="evtb_addbtn_title">{{ obj.name }}</h3>
-              <!-- <div class="ebt-lbl-box" data-v-140022cf=""><p class="eventBox_Price" data-v-140022cf="">$45</p><div class="form-check listitme-p" data-v-140022cf=""><input class="form-check-input" type="checkbox" id="defaultCheck1" data-v-140022cf=""></div></div> -->
-              <p class="evtb_dsc">{{ obj.description }}</p>
-            </div>
-            <!-- end:left -->
-            <!-- right -->
-            <div class="evtb_addbtn_right">
-              <div class="evtb_addbtn_image">
-                <!-- <img
+                    <div class="evtb_addBtn_box">
+                      <div class="evtb_addbtn_area">
+                        <!-- left -->
+                        <div class="evtb_addbtn_left">
+                          <h3 class="evtb_addbtn_title">{{ obj.name }}</h3>
+                          <!-- <div class="ebt-lbl-box" data-v-140022cf=""><p class="eventBox_Price" data-v-140022cf="">$45</p><div class="form-check listitme-p" data-v-140022cf=""><input class="form-check-input" type="checkbox" id="defaultCheck1" data-v-140022cf=""></div></div> -->
+                          <p class="evtb_dsc">{{ obj.description }}</p>
+                        </div>
+                        <!-- end:left -->
+                        <!-- right -->
+                        <div class="evtb_addbtn_right">
+                          <div class="evtb_addbtn_image">
+                            <!-- <img
                   class="evnt_img-detail img-fluid"
                   src="https://sharetribe.imgix.net/5d49270c-e5cf-43c2-a9c0-1e920fe99ce7/61f49c2b-da27-4249-a685-7bb13d55fe61?auto=format&amp;fit=clip&amp;h=750&amp;w=750&amp;s=a8eaf9cf6c8126f8380e688e25f056bf"
                 /> -->
-                    <img
-                      alt="Product"
-                      class="evnt_img-detail img-fluid"
-                      :src="obj.defaultImageUrl"
-                      
-                    />
+                            <img
+                              alt="Product"
+                              class="evnt_img-detail img-fluid"
+                              :src="obj.defaultImageUrl"
+                            />
+                          </div>
+                          <div class="evtb_btn-number">
+                            <button
+                              type="button"
+                              data-target="#addtoQuoteBtn"
+                              v-on:click="CheckboxEnable(index)"
+                              data-dismiss="modal"
+                              class="btn btn_ebtb"
+                            >
+                              <span>Add to Quote</span>
+                              <span
+                                class="
+                                  AddExtrasToCartFormDesktop_sumPrice__1xEi2
+                                "
+                                >${{ obj.price }}</span
+                              >
+                            </button>
+                          </div>
+                        </div>
+                        <!-- end right -->
+                      </div>
+                    </div>
 
-</div>
-              <div class="evtb_btn-number">
-                <button type="button" data-target="#addtoQuoteBtn" v-on:click="CheckboxEnable(index)" data-dismiss="modal" class="btn btn_ebtb">
-                  <span>Add to Quote</span>
-                  <span class="AddExtrasToCartFormDesktop_sumPrice__1xEi2"
-                    >${{ obj.price }}</span
-                  >
-                </button>
+                    <!-- END::   Modal content-->
+                  </div>
+                </div>
               </div>
-            </div>
-            <!-- end right -->
-          </div>
-        </div>
-
-        <!-- END::   Modal content-->
-      </div>
-    </div>
-  </div>
-
 
               <div class="eventBox_item">
                 <div class="eventBox_item_left">
@@ -217,9 +258,7 @@
                   <div class="ebt-lt-bx">
                     <h3 class="eventBox_title_area">{{ obj.name }}</h3>
                     <div class="eventBox_title_disc">
-                      <span class=""
-                        >{{ obj.description }}</span
-                      >
+                      <span class="">{{ obj.description }}</span>
                     </div>
                   </div>
                   <!-- left top -->
@@ -227,7 +266,6 @@
                   <div class="ebt-lbl-box">
                     <p class="eventBox_Price">${{ obj.price }}</p>
                     <div class="form-check listitme-p">
-                      
                       <input
                         v-model="productsQuotes"
                         class="form-check-input"
@@ -260,9 +298,7 @@
                     <div class="SectionExtrasMaybe_extraAddBtnWrapper__22BOr">
                       <button
                         data-toggle="modal"
-                        
-                        :data-target="'#clikedAddBtn_' + index" 
-                        
+                        :data-target="'#clikedAddBtn_' + index"
                         type="button"
                         class="SectionExtrasMaybe_extraAddBtn__2By5D"
                       >
@@ -296,7 +332,11 @@
             </div>
             <div class="input_form_group">
               <div class="form_group">
-                <select class="form-control" id="exampleFormControlSelect1" v-model="timestart">
+                <select
+                  class="form-control"
+                  id="exampleFormControlSelect1"
+                  v-model="timestart"
+                >
                   <option>start time</option>
                   <option value="1:30">1:30 AM</option>
                   <option value="2:00">2:00 AM</option>
@@ -305,7 +345,11 @@
                 </select>
               </div>
               <div class="form_group">
-                <select v-model="timeend" class="form-control" id="exampleFormControlSelect1">
+                <select
+                  v-model="timeend"
+                  class="form-control"
+                  id="exampleFormControlSelect1"
+                >
                   <option>end time</option>
                   <option value="1:30">1:30 AM</option>
                   <option value="2:00">2:00 AM</option>
@@ -327,7 +371,8 @@
             <div class="">
               <button
                 type="button"
-              data-toggle="modal" data-target="#addtoQuoteBtn"
+                data-toggle="modal"
+                data-target="#addtoQuoteBtn"
                 class="btn btn_ebtb"
                 data-v-140022cf=""
               >
@@ -392,18 +437,22 @@ export default {
   props: {
     msg: String,
   },
-  components: {
-    
-  },
+  components: {},
   data() {
     return {
       productsQuotes: [],
       categories: [],
       products: [],
-      location:null,
-      datestart:null,
-      timestart:null,
-      timeend:null,
+      location: null,
+      datestart: null,
+      timestart: null,
+      timeend: null,
+      email:null,
+      fname:null,
+      lname:null,
+      phone:null,
+      //url:"https://api.myeventbox.com",
+      url:"http://localhost:3000",
     };
   },
   async mounted() {
@@ -411,15 +460,16 @@ export default {
     this.getProducts();
   },
   methods: {
-    CheckboxEnable(index){
+    CheckboxEnable(index) {
+      //style='border:1px solid #000000; border-radius:3px; padding:5px; color:#000000; ' 
       // alert(index)
-      document.getElementById("defaultCheck1_"+index).checked = true;
+      document.getElementById("defaultCheck1_" + index).checked = true;
       // jQuery("#defaultCheck1_"+index).prop("checked","true")
     },
     async getCategories() {
       //alert("asdf;lkj")
       let cat_result = await axios.get(
-        "https://api.myeventbox.com/common/categories"
+        this.url+"/common/categories"
       );
       this.categories = await cat_result.data.data;
       console.log(await cat_result.data);
@@ -438,13 +488,15 @@ passwordConfirmation: "Test@123"
 phone: "+1 3333333333"
       */
       let cat_result = await axios.get(
-        "https://api.myeventbox.com/common/getToolboxProducts"
+        this.url+"/common/getToolboxProducts"
       );
       this.products = await cat_result.data.data;
       console.log(await cat_result.data);
     },
-    async postQuotes() {},
-      async postQuotes_() {
+    async postQuotes_() {
+      alert("Hello");
+    },
+    async postQuotes() {
       alert("Posting...");
       // let cat_quote = await axios.post(
 
@@ -452,7 +504,7 @@ phone: "+1 3333333333"
 
       this.productsQuotes.forEach((element) => {
         axios
-          .post("https://api.myeventbox.com/events/PartialEvent", {
+          .post(this.url+"/events/PartialEvent", {
             anything_else: "Test",
             category: "5eb358f7b27c7a0033a649ac",
             categoryName: "Food + Beverage",
@@ -479,10 +531,10 @@ phone: "+1 3333333333"
             new_event: true,
             password: "Test@123",
             planner: "",
-            planner_email: "teerath@plego.com",
-            planner_fullname: "TEERATH KUMAR",
+            planner_email: this.email,
+            planner_fullname: this.fname+" "+this.lname,
             planner_id: "62c74d6bc937923d5303e52e",
-            planner_mobile: "3333333333",
+            planner_mobile: this.phone,
             price: 56,
             product_id: element, // 62d84b9caf37a2745aeae6cf
             product_name: "Test Product (Show Evan)", // Demo Product
@@ -627,7 +679,7 @@ phone: "+1 3333333333"
 
 <style scoped>
 button.close {
-    outline: none;
+  outline: none;
 }
 p.evtb_dsc {
   margin-top: 22px;
@@ -638,8 +690,8 @@ p.evtb_dsc {
   padding-bottom: 22px;
 }
 .form-group-rtquoteBx {
-    padding-bottom: 10px;
-    padding-top: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 button.close.bteb_popup {
   text-align: right;
