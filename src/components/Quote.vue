@@ -1,4 +1,63 @@
 <template>
+<!-- START: CONTACT Modal -->
+  <div class="modal fade" id="eventContactVendor" tabindex="-1" role="dialog" aria-labelledby="SelectanEvent" aria-hidden="true">
+    <div class="modal-dialog">    
+      <!-- Modal content-->
+      <div class="modal-content ">	
+		<div class="form-group event-comm-title">
+			<h2 class="modal-title">Contact Vendor</h2>	
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+		</div>
+		<!-- START: DATE PICKER -->
+		<div class="form-group event-comm">
+    <label for="exampleFormControlTextarea1">Message*</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Type a message here..."></textarea>
+	<span class="txt-hint">You have 1000 characters remaining</span>
+  </div>
+  <div class="btn-space-event-comm ">
+					<button class="btn link-second " type="button">Cancel</button>
+					<button class="btn primary" type="button">Send</button>
+				</div>
+	
+	
+
+      </div>
+      
+    </div>
+  </div>
+  <!-- END : CONTACT MODAL -->
+<!-- START  REJECT:: Modal -->
+  <div class="modal fade" id="SelectanEventReject" tabindex="-1" role="dialog" aria-labelledby="SelectanEventReject" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content "> 
+			<div class="form-group event-comm-title">
+				<h2 class="modal-title">Reject Quote</h2>	
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+			</div>
+			<!-- START: DATE PICKER -->
+			<div class="form-group event-comm">
+				<label for="exampleFormControlTextarea1">Reason*</label>
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Write a reason to reject quote.."></textarea>
+				<span class="txt-hint">You have 1000 characters remaining</span>
+			</div>
+			<div class="form-check event-comm-check event-comm">
+				<input class="form-check-input" type="checkbox" value="" id="reqcon">
+				<label class="reqcon-label" for="reqcon">
+					Request for Counter Offer
+				</label>
+			</div>
+			<div class="btn-space-event-comm ">
+				<button class="btn link-second " type="button">Cancel</button>
+				<button class="btn primary" type="button">Send</button>
+			</div>	
+		</div>          
+    </div>
+  </div>
+  <!-- END REJECT:: Modal -->
   <div class="container" style="box-shadow: 0 0 10px 3px #ccc">
     <div class="quote-invoice-header">
       <div class="quote-invoice-image">
@@ -405,6 +464,7 @@
           data-html2canvas-ignore="true"
           type="button"
           v-on:click="RejectQuote"
+          data-toggle="modal" data-target="#SelectanEventReject"
         >
           Reject
         </button>
@@ -413,6 +473,7 @@
           class="btn primary btndown"
           data-html2canvas-ignore="true"
           type="button"
+          data-toggle="modal" data-target="#eventContactVendor"
         >
           Contact
         </button>
@@ -476,6 +537,59 @@ export default {
 
 
 <style scoped>
+.form-group.event-comm-title {
+    padding: 30px 30px 3px 30px;
+    margin-bottom: 0;
+}
+label.reqcon-label {
+    padding-left: 10px;
+    line-height: 27px;
+}
+.btn-space-event-comm button.btn.primary, .btn-space-event-comm button.btn.link-second {
+    height: 50px;
+    width: calc(50% - 8px);
+}
+button.btn.link-second {
+    color: #000;
+    background: #fff;
+    border-color: #5067eb;
+}
+.btn-space .btn {
+    height: 40px;
+    width: calc(50% - 50px);
+}
+.form-check.event-comm-check.event-comm {
+    margin: 0 30px;
+}
+.btn-space-event-comm {
+    border-top: 1px solid #e2e2e2;
+    padding: 25px 35px 25px 35px;
+    margin-top: 20px;
+    background: #fafafa;
+    display: flex;
+    justify-content: space-between;
+}
+.form-check.event-comm-check {
+    padding: 20px;
+}
+.event-comm input#reqcon {
+    height: 20px;
+    width: 20px;
+}
+.event-comm {
+    padding: 30px;
+    margin-bottom: 0;
+}
+span.txt-hint {
+    font-size: 12px;
+    float: right;
+    padding-top: 10px;
+}
+.btn.primary {
+    color: #fff;
+    border-color: transparent;
+    background: #5067eb;
+}
 button.btn.primary {
   width: 146px;
   font-size: 20px;
@@ -629,6 +743,11 @@ span.detail {
   min-width: 100%;
   display: flex;
   flex-direction: column;
+}
+.form-group.event-comm-title .close {
+    position: fixed;
+    top: 19px;
+    right: 29px;
 }
 .table-head {
   display: flex;
