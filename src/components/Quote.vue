@@ -17,7 +17,7 @@
 	<span class="txt-hint">You have 1000 characters remaining</span>
   </div>
   <div class="btn-space-event-comm ">
-					<button class="btn link-second " type="button">Cancel</button>
+					<button class="btn link-second " type="button" data-dismiss="modal" aria-label="Close">Cancel</button>
 					<button class="btn primary" type="button">Send</button>
 				</div>
 	
@@ -51,7 +51,7 @@
 				</label>
 			</div>
 			<div class="btn-space-event-comm ">
-				<button class="btn link-second " type="button">Cancel</button>
+				<button class="btn link-second " type="button" data-dismiss="modal" aria-label="Close">Cancel</button>
 				<button class="btn primary" type="button">Send</button>
 			</div>	
 		</div>          
